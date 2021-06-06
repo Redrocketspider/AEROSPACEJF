@@ -1,0 +1,223 @@
+//SASS variables
+
+// color schemes
+$ashgray: #B2BEB5;
+$blue-gray: #6699CC;
+$white: #FFFFFF;
+$pink: #FFC0CB;
+
+// arithmetic operators
+$gutter: 1em;
+
+// background image
+$exploration: url(../images/constellation_dark.jpg) repeat 0 0;
+
+// media screen sizes
+$medium: 800px;
+$small: 500px;
+$extra-small: 360px;
+
+// padding
+$padding: 1em;
+$pad2: 2em;
+
+// organize element styles: written by (@include name)
+@mixin tc {
+	color: $blue-gray;
+	padding: 2em;
+
+// use spin to customize the color scheme example: spin($pink, number) 
+}
+
+@mixin copa($ashgray, $padding) {
+	padding: $padding;
+	color: $ashgray;
+}
+
+html {
+	background: $exploration;
+	font-family: Arial, Helvetics, sans-serif;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.4s ease-out;
+	transition: transform 0.4s ease-out;
+	height: 100%;
+	
+	@media (max-width: $medium) {
+		section {
+			flex-direction: column;	
+		}
+	}
+}
+
+body {
+	background: darken($blue-gray, 45%);
+	@include tc;
+	opacity: 0.75;
+	line-height: 1em;
+	max-width: 100%;
+	
+	section {
+		background: darken($blue-gray, 40%);
+		color: $blue-gray;
+		font-size: 12px;
+		margin-top: $gutter - 3em;
+		margin-bottom: $gutter + 1em;
+		display: flex;
+		
+		.column {
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: 0;
+			margin: 0em .5em 0em 1em;
+		}
+		
+		.column1 {
+			padding: $gutter;
+		}
+		
+		.column2 {
+		
+			h1 {
+				font-size: 28px;
+				text-align: center;
+				@include copa($ashgray, $padding);
+				
+				@media (max-width: $small) {
+					margin-top: $gutter - 3em;
+				}
+			
+				@media (max-width: $extra-small) {
+					font-size: 20px;
+				}
+			}	
+		}
+		
+		.column3 {
+			padding-top: $pad2;
+			
+			.nav_menu {		
+				background-color: darken($blue-gray, 30%);
+				
+				#flexNav {
+					max-width: 100%;
+					font-size: 14px;
+					@include copa($ashgray, $padding);
+					display: flex;
+					flex-direction: row;
+										
+					.dropbtn {						
+						&:hover {
+							.dropdown-content {
+								display: flex;
+								flex-direction: column;	
+								font-size: 12px;
+							}
+						}
+					}
+					
+					.dropdown-content {
+						display: none;
+					}
+					
+					@media (max-width: $small) {
+						display: none;
+					}
+					
+					@media (max-width: $extra-small) {
+						font-size: 10px;
+					}
+				}	
+			
+				a.icon {
+					display: none;
+					color: lighten($blue-gray, 20%);
+					
+					@media (max-width: $small) {
+						display: block;
+						font-size: 30px;
+					}
+				}
+				
+				a {
+					text-decoration: none;
+					@include copa($ashgray, $padding);		
+					
+					&:visited {
+						color: darken($blue-gray, 10%);
+					}
+
+					&:hover {
+						color: lighten($ashgray, 40%);
+					}
+				}
+				
+				li {
+					list-style-type: none;					
+				}
+			}
+			
+			@media (max-width: $small) {
+				position: relative;
+			}
+		}
+		
+		h2 {
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		p {
+			@media (max-width: $extra-small) {
+				font-size: 10px;
+				line-height: 1.5em;
+			}
+		}
+		
+		img {
+			max-width: 100%;
+		}
+		
+		a {
+			color: lighten($blue-gray, 15%);
+			text-decoration: none;
+			
+			&:visited {
+				color: darken($blue-gray, 10%);
+			}
+
+			&:hover {
+				color: lighten($ashgray, 40%);
+			}
+		}
+		
+		ul {			
+			.link {
+				text-align: center;
+			}
+			
+			.paragraph1 {
+				text-align: left;
+				
+				@media (max-width: $extra-small) {
+					line-height: 1em;
+				}
+			}
+		}
+		
+		.social_media {
+			font-size: 30px;
+			text-align: center;
+			
+			@media (max-width: $small) {
+				font-size: 15px;
+			}
+		}
+	}
+	
+	footer {
+		color: lighten($blue-gray, 10%);
+		font-size: 10px;
+		text-align: center;
+	}
+}
